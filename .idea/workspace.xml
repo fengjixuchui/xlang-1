@@ -13,12 +13,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7b03169d-79cc-40d9-920c-49c97c6b7d04" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lexer.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lexer.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/token.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/token.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ast.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ast.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lexer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/lexer.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lexer.h" beforeDir="false" afterPath="$PROJECT_DIR$/lexer.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/token.h" beforeDir="false" afterPath="$PROJECT_DIR$/token.h" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -42,7 +45,8 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../Git/bin/git.exe" />
-    <property name="settings.editor.selected.configurable" value="CMakeSettings" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -57,7 +61,7 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="XLang" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="E:\test.x" PASS_PARENT_ENVS_2="true" PROJECT_NAME="XLang" TARGET_NAME="XLang" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="XLang" RUN_TARGET_NAME="XLang">
+    <configuration name="XLang" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="E:\test.x E:\test.x" PASS_PARENT_ENVS_2="true" PROJECT_NAME="XLang" TARGET_NAME="XLang" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="XLang" RUN_TARGET_NAME="XLang">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -74,6 +78,9 @@
       <option name="presentableId" value="Default" />
       <updated>1581752633679</updated>
       <workItem from="1581752636149" duration="9851000" />
+      <workItem from="1582093263660" duration="1079000" />
+      <workItem from="1582375223462" duration="4240000" />
+      <workItem from="1582431702948" duration="7833000" />
     </task>
     <servers />
   </component>
@@ -85,7 +92,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

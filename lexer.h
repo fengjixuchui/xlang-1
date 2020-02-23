@@ -13,3 +13,4 @@ vector<Token> LexParser(string source,string file);
 bool IsLetter(char s);
 bool IsNumber(char s);
 bool InVector(string s,vector<string> v);
+bool IsHexNumber(char s);

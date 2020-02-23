@@ -4,9 +4,9 @@
 #include <iostream>
 #include <vector>
 #include <fstream>
-#include <sstream>
 #include "token.h"
 #include "lexer.h"
+#include "ast.h"
 using namespace std;
 int main(int argc,char *argv[]){
     vector<string> sources;
@@ -31,7 +31,7 @@ int main(int argc,char *argv[]){
         fs.close();
 
         vector<Token> tokens = LexParser(ss.str(), source);
-
+        cout << "ok" <<endl;
     }
     return 0;
 }

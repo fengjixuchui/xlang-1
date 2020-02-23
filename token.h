@@ -19,7 +19,8 @@ public:
         Keyword,
         Separarer,
         Operator,
-        Filter
+        Number,
+        Identifier
     };
     struct TokenPosition{
         string file;
