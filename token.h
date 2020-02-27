@@ -12,6 +12,7 @@ extern vector<string> Keywords;
 extern vector<string> Separarers;
 extern vector<string> Operators;
 extern vector<string> Filters;
+extern vector<string> Strings;
 
 class Token{
 public:
@@ -20,7 +21,9 @@ public:
         Separarer,
         Operator,
         Number,
-        Identifier
+        Identifier,
+        String,
+        EndOfToken
     };
     struct TokenPosition{
         string file;

@@ -13,14 +13,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7b03169d-79cc-40d9-920c-49c97c6b7d04" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/ast.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ast.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lexer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/lexer.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lexer.h" beforeDir="false" afterPath="$PROJECT_DIR$/lexer.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ast.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/ast.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ast.h" beforeDir="false" afterPath="$PROJECT_DIR$/ast.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/token.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/token.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/token.h" beforeDir="false" afterPath="$PROJECT_DIR$/token.h" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -80,8 +77,27 @@
       <workItem from="1581752636149" duration="9851000" />
       <workItem from="1582093263660" duration="1079000" />
       <workItem from="1582375223462" duration="4240000" />
-      <workItem from="1582431702948" duration="7833000" />
+      <workItem from="1582431702948" duration="11100000" />
+      <workItem from="1582544386764" duration="1767000" />
+      <workItem from="1582697057705" duration="2939000" />
+      <workItem from="1582706597792" duration="601000" />
+      <workItem from="1582784019475" duration="1514000" />
     </task>
+    <task id="LOCAL-00001" summary="最近打游戏，上学，没多少空更新&#10;Lexer差不多写完了">
+      <created>1582441051028</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1582441051028</updated>
+    </task>
+    <task id="LOCAL-00002" summary="加了个readme">
+      <created>1582442905751</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1582442905752</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -99,5 +115,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="最近打游戏，上学，没多少空更新&#10;Lexer差不多写完了" />
+    <MESSAGE value="加了个readme" />
+    <option name="LAST_COMMIT_MESSAGE" value="加了个readme" />
   </component>
 </project>

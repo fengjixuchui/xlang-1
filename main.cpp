@@ -31,7 +31,7 @@ int main(int argc,char *argv[]){
         fs.close();
 
         vector<Token> tokens = LexParser(ss.str(), source);
-        cout << "ok" <<endl;
+        Ast ast = SynParse(tokens);
     }
     return 0;
 }

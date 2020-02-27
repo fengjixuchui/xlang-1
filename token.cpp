@@ -9,4 +9,5 @@ vector<string> Keywords = {"if","else","function","class","import","return","whi
 vector<string> Separarers = {";",",","{","}","[","]","(",")"};
 vector<string> Operators = {"+","-","*","/",">","<","=","!","."};
 vector<string> Filters ={" ","\t","\r","\n"};
+vector<string> Strings = {"\"","'"};
 
