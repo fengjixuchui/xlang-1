@@ -22,8 +22,7 @@ public:
         Operator,
         Number,
         Identifier,
-        String,
-        EndOfToken
+        String
     };
     struct TokenPosition{
         string file;
