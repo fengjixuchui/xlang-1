@@ -6,7 +6,10 @@
 #include "token.h"
 #include <memory>
 using namespace std;
-
+enum class NodeType{
+    Unknown,
+    Expression
+};
 class Ast;
 class Node;
 class Expression;
@@ -23,23 +26,29 @@ public:
     size_t pointer;
 
     Ast(vector<Token> _tokens);
-    void walkToken();
+    shared_ptr<Node> walkToken();
     Token getNextToken();
     void parse();
-
-    //makes
+    //parse
+    shared_ptr<Expression> parseExpression();
     shared_ptr<Expression> parseIdentifier();
+    //make
     shared_ptr<Expression> makeVariable(string type,string name);
     shared_ptr<Expression> makeCall(string target);
     shared_ptr<Expression> makeFunction(string returntype,string name);
+    shared_ptr<Expression> makeNumber(string value);
     //error system
     bool printFile = true;
-    void printError(int ErrorID,string arg[] = {});
+    void printError(int ErrorID,vector<string> arg = {});
 };
 /* Node */
 class Node{
+public:
+    NodeType type = NodeType::Unknown;
 };
 class Expression : public Node{
+public:
+    NodeType type = NodeType::Expression;
 };
 class Call : public Expression{
 public:
@@ -52,6 +61,7 @@ public:
     Variable(shared_ptr<Identifier> _type,shared_ptr<Identifier> _name);
     shared_ptr<Identifier> type;
     shared_ptr<Identifier> name;
+    shared_ptr<Expression> value;
 };
 class Identifier : public Expression{
 public:
@@ -63,5 +73,10 @@ public:
     Function(shared_ptr<Identifier> _returntype,shared_ptr<Identifier> name);
     shared_ptr<Identifier> returntype;
     shared_ptr<Identifier> name;
+};
+class Number : public Expression{
+public:
+    Number(string _content);
+    string content;
 };
 Ast SynParse(vector<Token> tokens);
