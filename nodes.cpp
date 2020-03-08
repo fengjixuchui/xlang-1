@@ -16,3 +16,8 @@ Call::Call(shared_ptr<Identifier> _target,vector<Expression> _args) : target(mov
 
 Identifier::Identifier(string _content) : content(_content) {
 }
+
+
+Number::Number(string _content) : content(_content){
+
+}

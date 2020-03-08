@@ -34,15 +34,19 @@ Token Ast::getNextToken() {
     return (nowToken = result);
 }
 
-void Ast::walkToken() {
+shared_ptr<Node> Ast::walkToken() {
     Token t = getNextToken();
-    if(t.type == Token::TokenType::Identifier){
-        shared_ptr<Expression> node = parseIdentifier();
+    shared_ptr<Expression> node = nullptr;
+    if(t.type == Token::TokenType::Identifier
+    || t.type == Token::TokenType::Number
+    || t.content == "("){
+        node = parseExpression();
         cout << "success";
     }
+    return node;
 }
 
-void Ast::printError(int ErrorID, string args[]) {
+void Ast::printError(int ErrorID, vector<string> args) {
     if(printFile){
         cerr << "at " << nowToken.position.file << ":";
         printFile = false;
@@ -82,21 +86,36 @@ shared_ptr<Expression> Ast::makeVariable(string type,string name) {
     }
     shared_ptr<Expression> node = make_shared<Variable>(make_shared<Identifier>(type),make_shared<Identifier>(name));
     if(t.content == "="){
-
+        getNextToken();
+        static_pointer_cast<Variable>(node)->value = parseExpression();
     }else if(t.content == ";"){
-
         return node;
     }else{
-        printError(10001,new string{t.content});
+        printError(10001,{t.content});
     }
-    return nullptr;
+    return node;
 }
 
 shared_ptr<Expression> Ast::makeCall(string target) {
     shared_ptr<Expression> node = make_shared<Call>(make_shared<Identifier>(target));
-
-
     return node;
 }
 
+shared_ptr<Expression> Ast::makeFunction(string returntype, string name) {
+
+}
+
+shared_ptr<Expression> Ast::makeNumber(string value) {
+    return make_shared<Number>(value);
+}
+
+shared_ptr<Expression> Ast::parseExpression() {
+    shared_ptr<Expression> result = nullptr;
+    if(nowToken.type == Token::TokenType::Identifier){
+        result = parseIdentifier();
+    } else if(nowToken.type == Token::TokenType::Number) {
+        result = makeNumber(nowToken.content);
+    }
+    return result;
+}
 
