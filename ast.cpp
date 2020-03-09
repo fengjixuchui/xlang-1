@@ -79,7 +79,7 @@ shared_ptr<Expression> Ast::parseIdentifier() {
     return result;
 }
 
-shared_ptr<Expression> Ast::makeVariable(string type,string name) {
+shared_ptr<Expression> Ast::makeVariable(string type,string name,bool isinline) {
     Token t = getNextToken();
     if(t.content == "(") {
         return makeFunction(type, name);
@@ -88,7 +88,7 @@ shared_ptr<Expression> Ast::makeVariable(string type,string name) {
     if(t.content == "="){
         getNextToken();
         static_pointer_cast<Variable>(node)->value = parseExpression();
-    }else if(t.content == ";"){
+    }else if(t.content == ";" || t.content == ","){
         return node;
     }else{
         printError(10001,{t.content});

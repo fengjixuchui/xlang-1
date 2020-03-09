@@ -15,8 +15,7 @@
     <list default="true" id="7b03169d-79cc-40d9-920c-49c97c6b7d04" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ast.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/ast.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ast.h" beforeDir="false" afterPath="$PROJECT_DIR$/ast.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nodes.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/nodes.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -56,7 +55,7 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="XLang" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="E:\test.x E:\test.x" PASS_PARENT_ENVS_2="true" PROJECT_NAME="XLang" TARGET_NAME="XLang" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="XLang" RUN_TARGET_NAME="XLang">
+    <configuration name="XLang" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="E:\test.x -v" PASS_PARENT_ENVS_2="true" PROJECT_NAME="XLang" TARGET_NAME="XLang" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="XLang" RUN_TARGET_NAME="XLang">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -90,7 +89,8 @@
       <workItem from="1583498182316" duration="1450000" />
       <workItem from="1583560482070" duration="597000" />
       <workItem from="1583649673633" duration="2596000" />
-      <workItem from="1583656639674" duration="610000" />
+      <workItem from="1583656639674" duration="1320000" />
+      <workItem from="1583750805299" duration="840000" />
     </task>
     <task id="LOCAL-00001" summary="最近打游戏，上学，没多少空更新&#10;Lexer差不多写完了">
       <created>1582441051028</created>
@@ -127,7 +127,14 @@
       <option name="project" value="LOCAL" />
       <updated>1583490286289</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="能够解析变量声明和带初始值的语法了">
+      <created>1583657302983</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1583657302984</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -152,7 +159,8 @@
     <MESSAGE value="开始写语法分析器" />
     <MESSAGE value="已经能识别变量声明表达式（无初始值）" />
     <MESSAGE value="这写的头有点晕2333333" />
-    <option name="LAST_COMMIT_MESSAGE" value="这写的头有点晕2333333" />
+    <MESSAGE value="能够解析变量声明和带初始值的语法了" />
+    <option name="LAST_COMMIT_MESSAGE" value="能够解析变量声明和带初始值的语法了" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
