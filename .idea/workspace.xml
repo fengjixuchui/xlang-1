@@ -12,10 +12,14 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7b03169d-79cc-40d9-920c-49c97c6b7d04" name="Default Changelist" comment="">
+    <list default="true" id="7b03169d-79cc-40d9-920c-49c97c6b7d04" name="Default Changelist" comment="重写Ast部分，优化部分代码。&#10;注：我新的硬盘和内存到货之前我是不会更新的了！垃圾电脑">
+      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ast.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/ast.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ast.h" beforeDir="false" afterPath="$PROJECT_DIR$/ast.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodes.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/nodes.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/token.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/token.cpp" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,6 +35,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
+  <component name="MacroExpansionManager">
+    <option name="directoryName" value="snqkPWXN" />
+  </component>
   <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
   <component name="ProjectId" id="1XpowG6fUS72L9KkS9Z299ryN5h" />
   <component name="ProjectLevelVcsManager">
@@ -40,7 +47,7 @@
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../Git/bin/git.exe" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="CPPToolchains" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -90,7 +97,12 @@
       <workItem from="1583560482070" duration="597000" />
       <workItem from="1583649673633" duration="2596000" />
       <workItem from="1583656639674" duration="1320000" />
-      <workItem from="1583750805299" duration="840000" />
+      <workItem from="1583750805299" duration="1195000" />
+      <workItem from="1584010032372" duration="314000" />
+      <workItem from="1584517249369" duration="1191000" />
+      <workItem from="1584699797712" duration="657000" />
+      <workItem from="1585205537662" duration="1508000" />
+      <workItem from="1585398904471" duration="3733000" />
     </task>
     <task id="LOCAL-00001" summary="最近打游戏，上学，没多少空更新&#10;Lexer差不多写完了">
       <created>1582441051028</created>
@@ -134,7 +146,14 @@
       <option name="project" value="LOCAL" />
       <updated>1583657302984</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="咸鱼化，今天几乎什么都没动">
+      <created>1583751933011</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1583751933013</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -160,17 +179,8 @@
     <MESSAGE value="已经能识别变量声明表达式（无初始值）" />
     <MESSAGE value="这写的头有点晕2333333" />
     <MESSAGE value="能够解析变量声明和带初始值的语法了" />
-    <option name="LAST_COMMIT_MESSAGE" value="能够解析变量声明和带初始值的语法了" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/ast.cpp</url>
-          <line>43</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="咸鱼化，今天几乎什么都没动" />
+    <MESSAGE value="重写Ast部分，优化部分代码。&#10;注：我新的硬盘和内存到货之前我是不会更新的了！垃圾电脑" />
+    <option name="LAST_COMMIT_MESSAGE" value="重写Ast部分，优化部分代码。&#10;注：我新的硬盘和内存到货之前我是不会更新的了！垃圾电脑" />
   </component>
 </project>
