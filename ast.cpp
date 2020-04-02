@@ -3,15 +3,17 @@
 //
 
 #include "ast.h"
+#define __check_type(a,b) a.type == b
+#define __check_value(a,b) a.content == b
+////////////////////////////////////////////////////
+
 Ast SynParse(vector<Token> tokens){
     Ast result(tokens);
     result.parse();
     return result;
 }
 
-Node *getnode(shared_ptr<Node> s){
-    return s.get();
-}
+////////////////////////////////////////////////////
 
 Ast::Ast(const vector<Token> _tokens) : tokens(_tokens) , pointer(0) , rootNode(new Node()){
 
@@ -31,24 +33,72 @@ Token Ast::getNextToken() {
         result = this->tokens[this->pointer];
     }
     this->pointer++;
-    return (nowToken = result);
+    return (pointer_token = result);
 }
+
+/////////////////////////////////////////////////////
 
 shared_ptr<Node> Ast::walkToken() {
     Token t = getNextToken();
-    shared_ptr<Expression> node = nullptr;
-    if(t.type == Token::TokenType::Identifier
-    || t.type == Token::TokenType::Number
-    || t.content == "("){
-        node = parseExpression();
-        cout << "success";
+    shared_ptr<Node> node = nullptr;
+    if(__check_type(t,Token::Type::Keyword)){
+        if(__check_value(t,"import")){
+            node = handleImport();
+        }else if(__check_value(t,"class")){
+
+        }
     }
     return node;
 }
 
+shared_ptr<Import> Ast::handleImport() {
+    Token t = getNextToken();
+    if(__check_value(t,"{")){
+        //import {xxx,xxx...}
+        vector<shared_ptr<Type>> types;
+        do{
+            shared_ptr<Type> type = handleType();
+            types.push_back(type);
+            t = getNextToken();
+            if(__check_value(t,"}")){
+                break;
+            }else if(!(__check_value(t,","))){
+                printError(5003);
+            }
+        }while (true);
+        return make_shared<Import>(types);
+    }else if(__check_type(t,Token::Type::Identifier)){
+        shared_ptr<Type> type = handleType();
+        return make_shared<Import>(type);
+    }else {
+        printError(5002);
+    }
+    return nullptr;
+}
+
+shared_ptr<Type> Ast::handleType(){
+    vector<shared_ptr<Node>> nodes;
+    Token t = getNextToken();
+    int lastType = 1;
+    while(true){
+        if(__check_type(t,Token::Type::Identifier) || lastType == 1){
+            nodes.push_back(handleIdentifier());
+            lastType = 0;
+        }else if(__check_value(t,".") || lastType == 0){
+            nodes.push_back(handleIdentifier());
+            lastType = 1;
+        }else{
+            break;
+        }
+    }
+
+}
+
+////////////////////////////////////////////////
+
 void Ast::printError(int ErrorID, vector<string> args) {
     if(printFile){
-        cerr << "at " << nowToken.position.file << ":";
+        cerr << "at " << pointer_token.position.file << ":";
         printFile = false;
     }
 
@@ -57,65 +107,4 @@ void Ast::printError(int ErrorID, vector<string> args) {
     }
 }
 
-shared_ptr<Expression> Ast::parseIdentifier() {
-    Token t = nowToken;
-    string foo;
-    int lasttype = 2;//1:Identifier 2:(.)
-    while(t.type == Token::TokenType::Identifier || t.content == ".") {
-        if(t.type == Token::TokenType::Identifier && lasttype == 1){
-            break;
-        }
-        foo += t.content;
-        lasttype = (t.type == Token::TokenType::Identifier)? 1 : 2;
-        t = getNextToken();
-    }
-
-    shared_ptr<Expression> result = nullptr;
-    if(t.type == Token::TokenType::Identifier) {
-        result = makeVariable(foo,t.content);
-    }else if(t.content == "(") {
-        result = makeCall(foo);
-    }
-    return result;
-}
-
-shared_ptr<Expression> Ast::makeVariable(string type,string name,bool isinline) {
-    Token t = getNextToken();
-    if(t.content == "(") {
-        return makeFunction(type, name);
-    }
-    shared_ptr<Expression> node = make_shared<Variable>(make_shared<Identifier>(type),make_shared<Identifier>(name));
-    if(t.content == "="){
-        getNextToken();
-        static_pointer_cast<Variable>(node)->value = parseExpression();
-    }else if(t.content == ";" || t.content == ","){
-        return node;
-    }else{
-        printError(10001,{t.content});
-    }
-    return node;
-}
-
-shared_ptr<Expression> Ast::makeCall(string target) {
-    shared_ptr<Expression> node = make_shared<Call>(make_shared<Identifier>(target));
-    return node;
-}
-
-shared_ptr<Expression> Ast::makeFunction(string returntype, string name) {
-
-}
-
-shared_ptr<Expression> Ast::makeNumber(string value) {
-    return make_shared<Number>(value);
-}
-
-shared_ptr<Expression> Ast::parseExpression() {
-    shared_ptr<Expression> result = nullptr;
-    if(nowToken.type == Token::TokenType::Identifier){
-        result = parseIdentifier();
-    } else if(nowToken.type == Token::TokenType::Number) {
-        result = makeNumber(nowToken.content);
-    }
-    return result;
-}
 

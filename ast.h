@@ -6,77 +6,103 @@
 #include "token.h"
 #include <memory>
 using namespace std;
-enum class NodeType{
-    Unknown,
-    Expression
-};
 class Ast;
+
 class Node;
+
 class Expression;
-class Variable;
-class Call;
+class Type;
 class Identifier;
-/* Ast */
+
+class Statement;
+class Import;
+
+/* Ast And Parser */
 class Ast{
 public:
-    shared_ptr<Node> rootNode;
+    Ast(vector<Token> _tokens);
 
-    Token nowToken;
+    //token
+    Token pointer_token;
     vector<Token> tokens;
     size_t pointer;
-
-    Ast(vector<Token> _tokens);
-    shared_ptr<Node> walkToken();
     Token getNextToken();
+
+    //node
+    shared_ptr<Node> rootNode;
+
+    //parser
     void parse();
-    //parse
-    shared_ptr<Expression> parseExpression();
-    shared_ptr<Expression> parseIdentifier();
-    //make
-    shared_ptr<Expression> makeVariable(string type,string name);
-    shared_ptr<Expression> makeCall(string target);
-    shared_ptr<Expression> makeFunction(string returntype,string name);
-    shared_ptr<Expression> makeNumber(string value);
+    shared_ptr<Node> walkToken();
+
+
+    //handles
+    shared_ptr<Import> handleImport();
+    shared_ptr<Type> handleType();
+    shared_ptr<Identifier> handleIdentifier();
+
     //error system
     bool printFile = true;
     void printError(int ErrorID,vector<string> arg = {});
 };
 /* Node */
+
 class Node{
 public:
-    NodeType type = NodeType::Unknown;
+    virtual string getNodeType();
 };
 class Expression : public Node{
 public:
-    NodeType type = NodeType::Expression;
+    virtual string getNodeType();
 };
-class Call : public Expression{
+class Statement : public Node{
 public:
-    Call(shared_ptr<Identifier> _target,vector<Expression> _args = {});
-    shared_ptr<Identifier> target;
-    vector<Expression> args;
+    virtual string getNodeType();
 };
-class Variable : public Expression{
-public:
-    Variable(shared_ptr<Identifier> _type,shared_ptr<Identifier> _name);
-    shared_ptr<Identifier> type;
-    shared_ptr<Identifier> name;
-    shared_ptr<Expression> value;
-};
+
+
+/*
+ * xxxx...
+ */
 class Identifier : public Expression{
 public:
-    Identifier(string _content);
-    string content = "";
+    virtual string getNodeType();
+    string text;
 };
-class Function : public Expression{
+/*
+ * xxx.xxx.xxx...
+ */
+class Type : public Expression{
 public:
-    Function(shared_ptr<Identifier> _returntype,shared_ptr<Identifier> name);
-    shared_ptr<Identifier> returntype;
-    shared_ptr<Identifier> name;
+    virtual string getNodeType();
+    string getText();
+    vector<shared_ptr<Node>> Nodes;
 };
-class Number : public Expression{
+/*
+ * class xxx{
+ * [body]
+ * }
+ */
+class Class : public Expression{
 public:
-    Number(string _content);
-    string content;
+    virtual string getNodeType();
+    vector<Node> Nodes;
 };
+
+/*
+ * import {xxx}
+ * import xxx
+ */
+class Import : public Statement{
+public:
+    virtual string getNodeType();
+    Import(vector<shared_ptr<Type>> _type);
+    Import(shared_ptr<Type> _type);
+    vector<shared_ptr<Type>> type;
+};
+
+
+
+
+
 Ast SynParse(vector<Token> tokens);

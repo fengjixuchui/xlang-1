@@ -7,7 +7,7 @@
 import x.console;
 import x.string;
 namespace helloworld{
-	public class hello{
+	 public class hello{
 		public static void Main(string args[]){
 			console.out("Hello,World");
 		}

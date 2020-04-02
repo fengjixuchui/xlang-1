@@ -9,7 +9,8 @@
 #include "ast.h"
 using namespace std;
 void printVersion(){
-    cout<< "XLang" << endl;
+    cout << "XLang" << " Dev 0.1 " << endl;
+    cout << "Github: https://github.com/lwingteam/xlang" << endl;
 }
 int main(int argc,char *argv[]){
     vector<string> sources;
@@ -18,6 +19,7 @@ int main(int argc,char *argv[]){
         bool handled = false;
         if(element == "-v" || element == "--version"){
             printVersion();
+            handled = true;
         }
         if (!handled){
             //如果参数没有被处理
