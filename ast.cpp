@@ -33,7 +33,7 @@ Token Ast::getNextToken() {
         result = this->tokens[this->pointer];
     }
     this->pointer++;
-    return (nowToken = result);
+    return (pointer_token = result);
 }
 
 /////////////////////////////////////////////////////
@@ -41,7 +41,7 @@ Token Ast::getNextToken() {
 shared_ptr<Node> Ast::walkToken() {
     Token t = getNextToken();
     shared_ptr<Node> node = nullptr;
-    if(__check_type(t,Token::TokenType::Keyword)){
+    if(__check_type(t,Token::Type::Keyword)){
         if(__check_value(t,"import")){
             node = handleImport();
         }else if(__check_value(t,"class")){
@@ -67,7 +67,7 @@ shared_ptr<Import> Ast::handleImport() {
             }
         }while (true);
         return make_shared<Import>(types);
-    }else if(__check_type(t,Token::TokenType::Identifier)){
+    }else if(__check_type(t,Token::Type::Identifier)){
         shared_ptr<Type> type = handleType();
         return make_shared<Import>(type);
     }else {
@@ -77,7 +77,20 @@ shared_ptr<Import> Ast::handleImport() {
 }
 
 shared_ptr<Type> Ast::handleType(){
-    vector<Node> tokens;
+    vector<shared_ptr<Node>> nodes;
+    Token t = getNextToken();
+    int lastType = 1;
+    while(true){
+        if(__check_type(t,Token::Type::Identifier) || lastType == 1){
+            nodes.push_back(handleIdentifier());
+            lastType = 0;
+        }else if(__check_value(t,".") || lastType == 0){
+            nodes.push_back(handleIdentifier());
+            lastType = 1;
+        }else{
+            break;
+        }
+    }
 
 }
 
@@ -85,7 +98,7 @@ shared_ptr<Type> Ast::handleType(){
 
 void Ast::printError(int ErrorID, vector<string> args) {
     if(printFile){
-        cerr << "at " << nowToken.position.file << ":";
+        cerr << "at " << pointer_token.position.file << ":";
         printFile = false;
     }
 
@@ -93,4 +106,5 @@ void Ast::printError(int ErrorID, vector<string> args) {
         exit(ErrorID);
     }
 }
+
 

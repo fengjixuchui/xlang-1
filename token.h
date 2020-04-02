@@ -16,7 +16,7 @@ extern vector<string> Strings;
 
 class Token{
 public:
-    enum TokenType{
+    enum class Type{
         Keyword,
         Separarer,
         Operator,
@@ -24,13 +24,13 @@ public:
         Identifier,
         String
     };
-    struct TokenPosition{
+    struct Position{
         string file;
         size_t line;
         size_t offset;
     };
-    TokenPosition position;
+    Position position;
     string content;
-    TokenType type;
+    Type type;
 };
 

@@ -6,7 +6,7 @@
 Token t;\
 t.content = buffer;\
 t.type = (ty);\
-Token::TokenPosition position;\
+Token::Position position;\
 position.file = file;\
 position.line = line;\
 position.offset = stream.tellg();\
@@ -68,7 +68,7 @@ vector<Token> LexParser(string source ,string file){
             }else if(character == '/'){
                 note_level = 1;
             }else{
-                __save_and_clear(Token::TokenType::Operator);
+                __save_and_clear(Token::Type::Operator);
                 keep_character = true;
             }
             continue;
@@ -82,7 +82,7 @@ vector<Token> LexParser(string source ,string file){
             }
             if(InVector(buffer,Keywords)){
                 //如果是关键字
-                __save_and_clear(Token::TokenType::Keyword);
+                __save_and_clear(Token::Type::Keyword);
             }else{
                 //如果不是关键字
                 while ((IsLetter(character) || IsNumber(character)) && __not_eof(stream)){
@@ -90,7 +90,7 @@ vector<Token> LexParser(string source ,string file){
                     buffer += character;
                     stream.get(character);
                 }
-                __save_and_clear(Token::TokenType::Identifier);
+                __save_and_clear(Token::Type::Identifier);
             }
             keep_character = true;
         }else if(IsNumber(character)){
@@ -106,18 +106,18 @@ vector<Token> LexParser(string source ,string file){
                     stream.get(character);
                 }while ((hexnumber ? IsHexNumber(character) : IsNumber(character)) && __not_eof(stream));
             }
-            __save_and_clear(Token::TokenType::Number);
+            __save_and_clear(Token::Type::Number);
             keep_character = true;
         }else if(InVector(character_str,Operators)){
             /* 读取到了符号 */
             buffer += character;
             if(character != '/') {
-                __save_and_clear(Token::TokenType::Operator);
+                __save_and_clear(Token::Type::Operator);
             }
 
         }else if(InVector(character_str, Separarers)){
             buffer += character;
-            __save_and_clear(Token::TokenType::Separarer);
+            __save_and_clear(Token::Type::Separarer);
         }
     }
     return result;

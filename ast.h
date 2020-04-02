@@ -7,26 +7,40 @@
 #include <memory>
 using namespace std;
 class Ast;
+
 class Node;
+
 class Expression;
-class Import;
 class Type;
-/* Ast */
+class Identifier;
+
+class Statement;
+class Import;
+
+/* Ast And Parser */
 class Ast{
 public:
-    shared_ptr<Node> rootNode;
+    Ast(vector<Token> _tokens);
 
-    Token nowToken;
+    //token
+    Token pointer_token;
     vector<Token> tokens;
     size_t pointer;
-
-    Ast(vector<Token> _tokens);
-    shared_ptr<Node> walkToken();
     Token getNextToken();
+
+    //node
+    shared_ptr<Node> rootNode;
+
+    //parser
     void parse();
+    shared_ptr<Node> walkToken();
+
+
     //handles
     shared_ptr<Import> handleImport();
     shared_ptr<Type> handleType();
+    shared_ptr<Identifier> handleIdentifier();
+
     //error system
     bool printFile = true;
     void printError(int ErrorID,vector<string> arg = {});
@@ -34,28 +48,54 @@ public:
 /* Node */
 
 class Node{
+public:
+    virtual string getNodeType();
 };
 class Expression : public Node{
+public:
+    virtual string getNodeType();
+};
+class Statement : public Node{
+public:
+    virtual string getNodeType();
 };
 
 
-
+/*
+ * xxxx...
+ */
+class Identifier : public Expression{
+public:
+    virtual string getNodeType();
+    string text;
+};
 /*
  * xxx.xxx.xxx...
  */
 class Type : public Expression{
 public:
+    virtual string getNodeType();
     string getText();
+    vector<shared_ptr<Node>> Nodes;
+};
+/*
+ * class xxx{
+ * [body]
+ * }
+ */
+class Class : public Expression{
+public:
+    virtual string getNodeType();
     vector<Node> Nodes;
 };
-
 
 /*
  * import {xxx}
  * import xxx
  */
-class Import : public Expression{
+class Import : public Statement{
 public:
+    virtual string getNodeType();
     Import(vector<shared_ptr<Type>> _type);
     Import(shared_ptr<Type> _type);
     vector<shared_ptr<Type>> type;
